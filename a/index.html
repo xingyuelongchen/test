@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>看字选颜色</title>
+    <link rel="stylesheet" href="css/mian.css">
+    <script src="js/dprAuto.js"></script>
+    <script src="js/mian.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="content">
+            <div class="statr">
+                <p>看字选颜色</p>
+                <p class="on">开始游戏</p>
+                <p>
+
+                    游戏规则： 根据上方文字，点击下面相应颜色的按钮。选对加一分
+                </p>
+            </div>
+            <div class="run">
+                <div>
+                    <span>剩余时间：
+                        <i class="time">0</i>
+                    </span>
+                    <span>积分：
+                        <i class="fen">0</i>
+                    </span>
+                </div>
+                <div class="text">蓝</div>
+                <div class="btn">
+                    <button>黄</button>
+                    <button>黄</button>
+                    <button>黄</button>
+                    <button>黄</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function(){
+        statr();
+    })()
+    </script>
+</body>
+
+</html>
