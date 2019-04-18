@@ -1,3 +1,5 @@
 # test
 https://xingyuelongchen.github.io/test/
-![](https://github.com/xingyuelongchen/test/img.jpg)
+
+#看字选颜色小游戏
+https://xingyuelongchen.github.io/test/a

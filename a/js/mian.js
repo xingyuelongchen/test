@@ -49,16 +49,8 @@ function stop() {
 
 // 积分计算
 function jifen(a) {
-    var fen = getEl('.fen');
-    var num = fen.innerHTML;
-    if (a) {
-
-        num = num * 1 + 1;
-    }
-    if (!a && num > 0) {
-        num = num * 1 - 1;
-    }
-    fen.innerHTML = num;
+    var num = getEl('.fen').innerHTML;
+    fen.innerHTML = a ? num * 1 + 1 : num * 1 - 1;
     fontColor();
     return num;
 }
@@ -67,10 +59,9 @@ function jifen(a) {
 function fontColor() {
     var eText = getEl('.text');
     var eBtn = getEl('.btn').children;
-    var col = ['red', 'blue', 'yellow', 'green', 'black',"purple"];
-    var textCol = ['红', '蓝', '黄', '绿', '黑','紫'];
+    var col = ['red', 'blue', 'yellow', 'green', 'black', "purple"];
+    var textCol = ['红', '蓝', '黄', '绿', '黑', '紫'];
     var len = col.length; //获取的颜色长度
-
     var random = randomNum(len); //获取颜色随机数
     var btn = randomNum(eBtn.length);
     for (let i = 0; i < eBtn.length; i++) {
@@ -89,11 +80,12 @@ function fontColor() {
     eText.style.color = col[randomNum(len)]; //设置展示文本的颜色
     eText.innerHTML = textCol[random]; //设置展示的文字，
     eBtn[btn].style.color = col[random]; //随机给按钮添加正确答案的颜色
-    eBtn[btn].index = random;   //设置正确答案，用于判断时候使用
+    eBtn[btn].index = random; //设置正确答案，用于判断时候使用
 
     //判断是否选对
     isTrue(random);
 }
+
 
 function isTrue(a) {
     var btns = getEl('.btn').children;
