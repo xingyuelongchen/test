@@ -1,0 +1,52 @@
+#wrap{
+    width:480px;
+    height:480px;
+    background:url(../img/bg.png);
+    box-shadow:0 0 5px #bbb;
+    overflow: hidden;
+    position: relative;
+
+    #food{
+        width:15px;
+        height:15px;
+        background:url(../img/f1.png) no-repeat center;
+        position: absolute;
+        top:60px;
+        left:60px;
+    }
+    #bug{
+        &>div{
+            position: absolute;
+        }
+        #hd{
+            width:15px;
+            height:15px;
+            background-image:url(../img/head.png);
+            background-repeat: no-repeat;
+            background-position-y: -30px;
+            top:0;
+            left:30px;
+        }
+
+        #bd{
+            width:15px;
+            height:15px;
+            background-image:url(../img/h.png);
+            background-position: center;
+            top:0px;
+            left:15px;
+        }
+        #ft{
+            width:15px;
+            height:15px;
+            background-image:url(../img/wei.png);
+            background-position-y: -30px;
+            top:0px;
+            left:0px;
+        }
+    }
+   
+}
+button{
+    margin:20px;
+}

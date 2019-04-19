@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="js/dprAuto.js"></script> -->
+
+    <style>
+        #wrap {
+            overflow: hidden;
+        }
+
+        #wrap>div {
+            overflow: hidden;
+        }
+
+        #wrap>div>div {
+            float: left;
+            border: 1px solid #eee;
+        }
+
+        #wrap>div>div.bug {
+            background: red;
+            border-color: #f60;
+        }
+
+        #btn {
+            height: 50px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+        <div id="wrap">
+
+        </div>
+        <div id="btn">
+            <button>开始游戏</button>
+            <button>暂停游戏</button>
+            <button>继续游戏</button>
+            <button>结束游戏</button>
+        </div>
+    <script src="js/mian.js"></script>
+    <script>
+        function a() {
+            var b = new start();
+            b.a();
+            var eBtns = document.querySelectorAll('button');
+            eBtns[0].addEventListener('click', function () {
+                b.play();
+            });
+            eBtns[1].addEventListener('click', function () {
+                b.stop();
+            })
+            eBtns[2].addEventListener('click', function () {
+                b.keep();
+            })
+            eBtns[3].addEventListener('click', function () {
+                b.gameOver();
+            })
+        }
+        a();
+    </script>
+</body>
+
+</html>

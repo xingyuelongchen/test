@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 300px;
+            height: 300px;
+            background: #f4f4f4;
+            overflow: hidden;
+        }
+
+        .wrap>div>div {
+            border: 1px solid #eee;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        
+    </div>
+    <script>
+        var ebox = document.getElementsByClassName('wrap')[0];
+        var width = ebox.clientWidth;
+        var height = ebox.clientHeight;
+        var le = width / 30;
+        var hle = height / 30;
+        var boxArr =[];
+        for (let i = 0; i < hle; i++) {
+            boxArr[i] = [];
+            var rowdiv = document.createElement('div');
+            for (let j = 0; j < le; j++) {
+             boxArr[i][j]=j;
+                var coldiv = document.createElement('div');
+                rowdiv.appendChild(coldiv);
+            }
+            ebox.appendChild(rowdiv);
+        }
+    </script>
+</body>
+
+</html>
