@@ -58,13 +58,11 @@ start.prototype.initKeyCode = function () {
 
     // 初始化键盘事件
     this.key = function (e) {
-        obj.stop();
         e = e || window.event;
         if (e.keyCode > 40 || e.keyCode < 37) {
             return;
         }
         obj.isDir(e.keyCode);
-        obj.keep();
     }
 }
 
@@ -129,6 +127,7 @@ start.prototype.gameOver = function () {
 //控制移动方向
 start.prototype.isDir = function (keyCode) {
     if (!this.isplay) return;
+    this.stop();
     if (keyCode) {
         //判断当前按键是否为反方向，如果是不执行任何操作
         if (this.dir == 37 && keyCode == 39) return;
@@ -182,7 +181,7 @@ start.prototype.bug = function () {
         this.ball();
     }
     //
-
+    this.keep();
 }
 
 //生成随机数
