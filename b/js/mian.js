@@ -222,16 +222,16 @@ function a() {
     })
 
     //移动端方向控制键
-    eDir[0].addEventListener('click', function () {
+    eDir[0].addEventListener('touchstart', function () {
         b.isDir(37)
     })
-    eDir[1].addEventListener('click', function () {
+    eDir[1].addEventListener('touchstart', function () {
         b.isDir(38)
     })
-    eDir[2].addEventListener('click', function () {
+    eDir[2].addEventListener('touchstart', function () {
         b.isDir(40)
     })
-    eDir[3].addEventListener('click', function () {
+    eDir[3].addEventListener('touchstart', function () {
         b.isDir(39)
     })
 }
