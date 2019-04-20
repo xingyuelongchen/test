@@ -246,13 +246,18 @@ function a() {
 function isTouch(obj, b, num, ele) {
     ele.preventDefault();
     this.className = 'active';
-    b.isDir(num)
-    var time = setInterval(function () {
-        b.isDir(num)
-    }, 100);
+    this.a = b;
+    b.isDir(num);
+    var time = null;
+    var time1 = setTimeout(function () {
+        time = setInterval(function () {
+            this.a.isDir(num)
+        }, 80);
+    }, 250);
     //移动端离开按钮清除加速
     obj.ontouchend = function () {
         obj.removeAttribute('class');
         clearInterval(time);
+        clearTimeout(time1);
     }
 }
