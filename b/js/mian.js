@@ -205,7 +205,6 @@ function a() {
 
     } else {
         eDir = document.querySelector('#dir').style.display = 'none';
-
         b.size = 10; //设置PC端每个格子的大小
     }
 
@@ -228,78 +227,32 @@ function a() {
     //移动端方向控制键
     eDir[0].addEventListener('touchstart', function (e) {
         e = e || window.event;
-        e.preventDefault();
-        var time = null;
-        this.className = 'active';
-        b.isDir(37)
-
-        time = setInterval(function () {
-            b.isDir(37)
-        }, 100);
-        //移动端离开按钮清除加速
-        this.ontouchend = function () {
-            this.removeAttribute('class');
-            // console.log(time);
-            clearInterval(time);
-        }
+        isTouch(this, b, 37, e)
     })
     eDir[1].ontouchstart = function (e) {
         e = e || window.event;
-        e.preventDefault();
-        var time = null;
-        this.className = 'active';
-        b.isDir(38)
-
-        time = setInterval(function () {
-            b.isDir(38)
-        }, 100);
-        //移动端离开按钮清除加速
-        this.ontouchend = function () {
-            this.removeAttribute('class');
-            // console.log(time);
-            clearInterval(time);
-        }
+        isTouch(this, b, 38, e)
     }
     eDir[2].addEventListener('touchstart', function (e) {
         e = e || window.event;
-        e.preventDefault();
-        var time = null;
-        this.className = 'active';
-        b.isDir(40)
-
-        time = setInterval(function () {
-            b.isDir(40)
-        }, 100);
-        //移动端离开按钮清除加速
-        this.ontouchend = function () {
-            this.removeAttribute('class');
-            clearInterval(time);
-        }
+        isTouch(this, b, 40, e)
     })
     eDir[3].addEventListener('touchstart', function (e) {
         e = e || window.event;
-        e.preventDefault();
-        var time = null;
-        this.className = 'active';
-        b.isDir(39)
+        isTouch(this, b, 39, e)
+    })
+}
 
-        time = setInterval(function () {
-            b.isDir(39)
-        }, 100);
-        //移动端离开按钮清除加速
-        this.ontouchend = function () {
-            this.removeAttribute('class');
-            clearInterval(time);
-        }
-    })
-
-    eDir[1].addEventListener('touchend', function () {
-        this.removeAttribute('class');
-    })
-    eDir[2].addEventListener('touchend', function () {
-        this.removeAttribute('class');
-    })
-    eDir[3].addEventListener('touchend', function () {
-        this.removeAttribute('class');
-    })
+function isTouch(obj, b, num, ele) {
+    ele.preventDefault();
+    this.className = 'active';
+    b.isDir(num)
+    var time = setInterval(function () {
+        b.isDir(num)
+    }, 100);
+    //移动端离开按钮清除加速
+    obj.ontouchend = function () {
+        obj.removeAttribute('class');
+        clearInterval(time);
+    }
 }
