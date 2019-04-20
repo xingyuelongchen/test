@@ -198,7 +198,7 @@ function a() {
         b.mapWidth = 6.4; //设置适配移动端
         b.mapHeight = 4;
         b.px = 'rem'; //设置移动端长度单位
-        b.size = .1; //设置移动端每个格子的大小
+        b.size = .2; //设置移动端每个格子的大小
 
     } else {
         eDir = document.querySelector('#dir').style.display = 'none';
@@ -238,5 +238,17 @@ function a() {
     eDir[3].addEventListener('touchstart', function () {
         this.className = 'active';
         b.isDir(39)
+    })
+    eDir[0].addEventListener('touchend', function () {
+        this.removeAttribute('class');
+    })
+    eDir[1].addEventListener('touchend', function () {
+        this.removeAttribute('class');
+    })
+    eDir[2].addEventListener('touchend', function () {
+        this.removeAttribute('class');
+    })
+    eDir[3].addEventListener('touchend', function () {
+        this.removeAttribute('class');
     })
 }
