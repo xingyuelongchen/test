@@ -71,6 +71,7 @@
 
         #btn>button {
             margin: 5px;
+            font-size:.20rem;
         }
 
         #dir {
@@ -128,59 +129,6 @@
     </div>
 
     <script src="js/mian.js"></script>
-    <script>
-        //页面开始调用的
-        a();
-
-        function a() {
-            var b = new start();
-            var client = navigator.userAgent.toLowerCase();
-            if (client.indexOf('iphone') >= 0 || client.indexOf('android') >= 0) {
-                var eScript = document.createElement('script');
-                eScript.src = 'js/dprAuto.js';
-                document.head.appendChild(eScript);
-                b.mapWidth = 6.4; //设置适配移动端
-                b.mapHeight = 6.4;
-                b.px = 'rem'; //设置移动端长度单位
-                b.size = .1; //设置移动端每个格子的大小
-
-            } else {
-                eDir = document.querySelector('#dir').style.display = 'none';
-
-                b.size = 10; //设置PC端每个格子的大小
-            }
-            b.a();
-
-            var eBtns = document.querySelector('#btn').children;
-            var eDir = document.querySelector('#dir').querySelectorAll('button');
-            eBtns[0].addEventListener('click', function () {
-                b.play();
-            });
-            eBtns[1].addEventListener('click', function () {
-                b.stop();
-            })
-            eBtns[2].addEventListener('click', function () {
-                b.keep();
-            })
-            eBtns[3].addEventListener('click', function () {
-                b.gameOver();
-            })
-
-            //移动端方向控制键
-            eDir[0].addEventListener('click', function () {
-                b.isDir(37)
-            })
-            eDir[1].addEventListener('click', function () {
-                b.isDir(38)
-            })
-            eDir[2].addEventListener('click', function () {
-                b.isDir(40)
-            })
-            eDir[3].addEventListener('click', function () {
-                b.isDir(39)
-            })
-        }
-    </script>
 </body>
 
 </html>
