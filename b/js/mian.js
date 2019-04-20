@@ -126,6 +126,7 @@ start.prototype.gameOver = function () {
 
 //控制移动方向
 start.prototype.isDir = function (keyCode) {
+    if (!this.isplay) return;
     if (keyCode) {
         //判断当前按键是否为反方向，如果是不执行任何操作
         if (this.dir == 37 && keyCode == 39) return;
@@ -204,8 +205,8 @@ function a() {
 
         b.size = 10; //设置PC端每个格子的大小
     }
-    b.a();
 
+    b.a();
     var eBtns = document.querySelector('#btn').children;
     var eDir = document.querySelector('#dir').querySelectorAll('button');
     eBtns[0].addEventListener('click', function () {
@@ -223,15 +224,19 @@ function a() {
 
     //移动端方向控制键
     eDir[0].addEventListener('touchstart', function () {
+        this.className = 'active';
         b.isDir(37)
     })
     eDir[1].addEventListener('touchstart', function () {
+        this.className = 'active';
         b.isDir(38)
     })
     eDir[2].addEventListener('touchstart', function () {
+        this.className = 'active';
         b.isDir(40)
     })
     eDir[3].addEventListener('touchstart', function () {
+        this.className = 'active';
         b.isDir(39)
     })
 }
