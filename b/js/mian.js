@@ -105,6 +105,7 @@ start.prototype.keep = function () {
 
 //随机位置生成小球
 start.prototype.ball = function () {
+    if (!this.isplay) return;
     //X坐标
     this.ax = this.randomNum(0, this.col);
     //Y坐标
@@ -112,8 +113,9 @@ start.prototype.ball = function () {
     // console.log(this.ax, this.ay);
     // console.log(this.x, this.y);
     //生成的小球如果在虫子身体里面，就重新生成
-    if (this.bughd.indexOf(this.map[this.ay][this.ax]) == 0) {
+    if (this.bughd.indexOf(this.map[this.ay][this.ax]) >= 0) {
         this.ball();
+        return;
     }
     this.map[this.ay][this.ax].className = 'bug';
 }
@@ -170,6 +172,7 @@ start.prototype.bug = function () {
     this.bughd.pop();
 
     //每次移动都需要判断是否有撞到小球
+
     if (this.bughd.indexOf(this.map[this.ay][this.ax]) == 0) {
         //撞到小球就添加进身体
         this.bughd.push(this.map[this.ay][this.ay]);
@@ -198,7 +201,7 @@ function a() {
         b.mapWidth = 6.4; //设置适配移动端
         b.mapHeight = 4;
         b.px = 'rem'; //设置移动端长度单位
-        b.size = .2; //设置移动端每个格子的大小
+        b.size = .15; //设置移动端每个格子的大小
 
     } else {
         eDir = document.querySelector('#dir').style.display = 'none';
@@ -224,28 +227,72 @@ function a() {
 
     //移动端方向控制键
     eDir[0].addEventListener('touchstart', function (e) {
+        e = e || window.event;
         e.preventDefault();
+        var time = null;
         this.className = 'active';
         b.isDir(37)
+
+        time = setInterval(function () {
+            b.isDir(37)
+        }, 100);
+        //移动端离开按钮清除加速
+        this.ontouchend = function () {
+            this.removeAttribute('class');
+            // console.log(time);
+            clearInterval(time);
+        }
     })
-    eDir[1].addEventListener('touchstart', function (e) {
+    eDir[1].ontouchstart = function (e) {
+        e = e || window.event;
         e.preventDefault();
+        var time = null;
         this.className = 'active';
         b.isDir(38)
-    })
+
+        time = setInterval(function () {
+            b.isDir(38)
+        }, 100);
+        //移动端离开按钮清除加速
+        this.ontouchend = function () {
+            this.removeAttribute('class');
+            // console.log(time);
+            clearInterval(time);
+        }
+    }
     eDir[2].addEventListener('touchstart', function (e) {
+        e = e || window.event;
         e.preventDefault();
+        var time = null;
         this.className = 'active';
         b.isDir(40)
+
+        time = setInterval(function () {
+            b.isDir(40)
+        }, 100);
+        //移动端离开按钮清除加速
+        this.ontouchend = function () {
+            this.removeAttribute('class');
+            clearInterval(time);
+        }
     })
     eDir[3].addEventListener('touchstart', function (e) {
+        e = e || window.event;
         e.preventDefault();
+        var time = null;
         this.className = 'active';
         b.isDir(39)
+
+        time = setInterval(function () {
+            b.isDir(39)
+        }, 100);
+        //移动端离开按钮清除加速
+        this.ontouchend = function () {
+            this.removeAttribute('class');
+            clearInterval(time);
+        }
     })
-    eDir[0].addEventListener('touchend', function () {
-        this.removeAttribute('class');
-    })
+
     eDir[1].addEventListener('touchend', function () {
         this.removeAttribute('class');
     })
