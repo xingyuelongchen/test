@@ -13,11 +13,7 @@ function statr() {
     eOn.addEventListener('click', function () {
         this.parentNode.className += ' none';
         isTime();
-    }, false)
-    // eOn.onclick = function () {
-    //     this.parentNode.className += ' none';
-    // }
-
+    })
 }
 
 // 开始计时
@@ -61,7 +57,7 @@ function fontColor() {
     var eBtn = getEl('.btn').children;
     var col = ['red', 'blue', 'yellow', 'green', 'black', "purple"];
     var textCol = ['红', '蓝', '黄', '绿', '黑', '紫'];
-    var len = col.length; //获取的颜色长度
+    var len = col.length; //获取颜色长度
     var random = randomNum(len); //获取颜色随机数
     var btn = randomNum(eBtn.length);
     for (let i = 0; i < eBtn.length; i++) {

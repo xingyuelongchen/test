@@ -1,16 +1,14 @@
 function start() {
     this.ele = document.querySelector('#wrap');
-    this.btn = document.querySelector('#btn');
-    this.mapSize = 500; //地图尺寸;
-    this.size = 20; //当前每个格子大小
-    this.px = 'px'; //当前页面使用的长度单位
-
-
+    this.btn = document.querySelector('#btn')
 }
 
 start.prototype.a = function () {
     this.ele.innerHTML = '';
+    this.mapSize = 6.4; //地图尺寸;
+    this.size = .2; //当前每个格子大小
     this.map = []; //储存初始化后的地图数据
+    this.px = 'rem'; //当前页面使用的长度单位
     this.x = 0; //虫子初始坐标
     this.y = 0; //虫子初始坐标
     this.bugSize = 3; //初始虫子长度
@@ -23,12 +21,11 @@ start.prototype.a = function () {
     document.body.style.fontSize = (this.px == 'px' ? 14 : .24) + this.px;
 
 
-    
     //生成地图数据
-    for (let i = 0; i < Math.floor(this.mapSize / (this.size)); i++) {
+    for (let i = 0; i < this.mapSize / (this.size); i++) {
         this.map[i] = new Array();
         var rowbox = document.createElement('div');
-        for (let j = 0; j < Math.floor(this.mapSize / (this.size)); j++) {
+        for (let j = 0; j < this.mapSize / (this.size); j++) {
             var colbox = document.createElement('div');
             colbox.style.width = this.size - (this.px == 'px' ? 2 : 0.02) + this.px;
             colbox.style.height = this.size - (this.px == 'px' ? 2 : 0.02) + this.px;
@@ -126,6 +123,10 @@ start.prototype.isDir = function (keyCode) {
 
 //虫子移动
 start.prototype.bug = function () {
+
+    //判断虫子是否存在
+    if (this.bughd.length <= 0) return;
+
     //判断是否撞墙
     if ((this.x >= this.mapSize / this.size || this.x < 0) || (this.y >= this.mapSize / this.size || this.y < 0)) {
         this.gameOver();
@@ -184,6 +185,7 @@ function a() {
         b.gameOver();
     })
 
+    //移动端方向控制键
     eDir[0].addEventListener('click', function () {
         b.isDir(37)
     })
@@ -196,6 +198,7 @@ function a() {
     eDir[3].addEventListener('click', function () {
         b.isDir(39)
     })
+
 }
 
 a();

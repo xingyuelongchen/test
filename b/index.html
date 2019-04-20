@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- <script src="js/dprAuto.js"></script> -->
 
     <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
         #wrap {
             overflow: hidden;
+            margin: auto;
         }
 
         #wrap>div {
@@ -30,26 +36,85 @@
         #btn {
             height: 50px;
             line-height: 50px;
+            margin: auto;
+        }
+
+        #dir {
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        #dir button {
+            width: 2rem;
+            height: 2rem;
+            margin: 10px 0;
+            border-radius: 50%;
+            font-size: .5rem;
+            text-shadow: 0 0 5px #fff, 0 0 2px #000;
+            border: 1px solid #ccc;
+            background: linear-gradient(#fff, #eee);
+
+        }
+
+        #dir button:hover {
+            box-shadow: 0 0 5px #666, 0 0 5px #fff, 0 0 5px #ccc;
+            background: linear-gradient(#eee, #fff);
+        }
+
+        #dir div:first-of-type {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
     </style>
+
 </head>
 
 <body>
-        <div id="wrap">
-
-        </div>
+    <div id="content">
         <div id="btn">
             <button>开始游戏</button>
             <button>暂停游戏</button>
             <button>继续游戏</button>
             <button>结束游戏</button>
         </div>
+        <div id="wrap">
+            <!--这里是游戏地图数据-->
+        </div>
+        <div id="dir">
+
+            <button>左</button>
+            <div>
+                <button>上</button>
+                <button>下</button>
+            </div>
+            <button>右</button>
+        </div>
+    </div>
+
     <script src="js/mian.js"></script>
     <script>
+        //页面开始调用的
+        a();
         function a() {
             var b = new start();
+            
+            var client = navigator.userAgent.toLowerCase();
+            if (client.indexOf('iphone') >= 0 || client.indexOf('android') >= 0) {
+                var eScript = document.createElement('script');
+                eScript.src = 'js/dprAuto.js';
+                document.head.appendChild(eScript);
+                b.mapSize = 6.4; //设置适配移动端
+                b.px = 'rem';//设置移动端长度单位
+                b.size = .5;//设置移动端每个格子的大小
+            } else {
+                eDir = document.querySelector('#dir').style.display = 'none';
+            }
             b.a();
-            var eBtns = document.querySelectorAll('button');
+
+            var eBtns = document.querySelector('#btn').children;
+            var eDir = document.querySelector('#dir').querySelectorAll('button');
             eBtns[0].addEventListener('click', function () {
                 b.play();
             });
@@ -62,8 +127,21 @@
             eBtns[3].addEventListener('click', function () {
                 b.gameOver();
             })
+
+            //移动端方向控制键
+            eDir[0].addEventListener('click', function () {
+                b.isDir(37)
+            })
+            eDir[1].addEventListener('click', function () {
+                b.isDir(38)
+            })
+            eDir[2].addEventListener('click', function () {
+                b.isDir(40)
+            })
+            eDir[3].addEventListener('click', function () {
+                b.isDir(39)
+            })
         }
-        a();
     </script>
 </body>
 
