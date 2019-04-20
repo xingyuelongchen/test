@@ -127,7 +127,6 @@ start.prototype.gameOver = function () {
 //控制移动方向
 start.prototype.isDir = function (keyCode) {
     if (!this.isplay) return;
-    this.stop();
     if (keyCode) {
         //判断当前按键是否为反方向，如果是不执行任何操作
         if (this.dir == 37 && keyCode == 39) return;
@@ -138,6 +137,7 @@ start.prototype.isDir = function (keyCode) {
         //更新虫子移动方向
         this.dir = [37, 38, 39, 40][keyCode - 37];
     }
+    this.stop();
     //根据方向是否继续移动
     if (this.dir == 37) this.x += -1;;
     if (this.dir == 39) this.x += 1;
@@ -253,6 +253,7 @@ function isTouch(obj, b, num, ele) {
             this.a.isDir(num)
         }, 80);
     }, 250);
+    
     //移动端离开按钮清除加速
     obj.ontouchend = function () {
         obj.removeAttribute('class');
