@@ -223,19 +223,23 @@ function a() {
     })
 
     //移动端方向控制键
-    eDir[0].addEventListener('touchstart', function () {
+    eDir[0].addEventListener('touchstart', function (e) {
+        e.preventDefault();
         this.className = 'active';
         b.isDir(37)
     })
-    eDir[1].addEventListener('touchstart', function () {
+    eDir[1].addEventListener('touchstart', function (e) {
+        e.preventDefault();
         this.className = 'active';
         b.isDir(38)
     })
-    eDir[2].addEventListener('touchstart', function () {
+    eDir[2].addEventListener('touchstart', function (e) {
+        e.preventDefault();
         this.className = 'active';
         b.isDir(40)
     })
-    eDir[3].addEventListener('touchstart', function () {
+    eDir[3].addEventListener('touchstart', function (e) {
+        e.preventDefault();
         this.className = 'active';
         b.isDir(39)
     })
