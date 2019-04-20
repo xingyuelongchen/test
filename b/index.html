@@ -14,9 +14,18 @@
             margin: 0;
         }
 
+        #content {
+            width: 100%;
+        }
+
         #wrap {
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             margin: auto;
+            background: #eee;
         }
 
         #wrap>div {
@@ -28,15 +37,40 @@
             border: 1px solid #eee;
         }
 
+        /* #wrap>div:nth-child(2n) {
+            background: #fff;
+        } */
+
+        #wrap>div>div:nth-child(2n) {
+            background: #eee;
+        }
+
+        #wrap>div>div:nth-child(2n+1) {
+            background: #eee;
+        }
+
         #wrap>div>div.bug {
             background: red;
             border-color: #f60;
+            border-radius: 50%;
+        }
+
+        #wrap>div>div.buga {
+            background: #f60;
         }
 
         #btn {
-            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
             line-height: 50px;
-            margin: auto;
+            margin: 10px auto;
+        }
+
+        #btn>button {
+            margin: 5px;
         }
 
         #dir {
@@ -97,19 +131,23 @@
     <script>
         //页面开始调用的
         a();
+
         function a() {
             var b = new start();
-            
             var client = navigator.userAgent.toLowerCase();
             if (client.indexOf('iphone') >= 0 || client.indexOf('android') >= 0) {
                 var eScript = document.createElement('script');
                 eScript.src = 'js/dprAuto.js';
                 document.head.appendChild(eScript);
-                b.mapSize = 6.4; //设置适配移动端
-                b.px = 'rem';//设置移动端长度单位
-                b.size = .5;//设置移动端每个格子的大小
+                b.mapWidth = 6.4; //设置适配移动端
+                b.mapHeight = 6.4;
+                b.px = 'rem'; //设置移动端长度单位
+                b.size = .1; //设置移动端每个格子的大小
+
             } else {
                 eDir = document.querySelector('#dir').style.display = 'none';
+
+                b.size = 10; //设置PC端每个格子的大小
             }
             b.a();
 
