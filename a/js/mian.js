@@ -45,7 +45,8 @@ function stop() {
 
 // 积分计算
 function jifen(a) {
-    var num = getEl('.fen').innerHTML;
+    var fen = getEl('.fen');
+    var num = fen.innerHTML;
     fen.innerHTML = a ? num * 1 + 1 : num * 1 - 1;
     fontColor();
     return num;
